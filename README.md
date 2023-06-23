@@ -401,7 +401,7 @@ factorialize 5 \=> 120
 
 As you can see, `=>` is used to return values.
 
-All names in the parameter are accessible inside the function. `..` is the argument (useful for unnamed arguments).
+All names in the parameter are accessible inside the function. `..` is the argument (useful for unnamed parameters).
 
 Functions names are overloadable.
 
