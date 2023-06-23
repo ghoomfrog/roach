@@ -27,7 +27,8 @@ Fields are groups of contiguous bits. Every scalar value in Roach is a field. He
 [?]   \ arch-bit type
 .T    \ floating-point version of type T
 -T    \ signed version of unsigned type T
-T~    \ dynamic version of type T
+T~    \ dynamic version of type T where its size is its minimum number of bits
+~T    \ dynamic version of type T where its size is its maximum number of bits
 T~m   \ dynamic version of type T where its size is its minimum number of bits, and m is its maximum
 ```
 
