@@ -18,7 +18,7 @@ Note that '\)' needs to be preceded by a newline to close the comment.
 
 # Fields
 
-Fields are groups of contiguous bits. Every scalar value in Roach is a field. Here are the various field types:
+Fields are groups of contiguous bits. Every scalar and vector value in Roach is a field. Here are the various field types:
 
 ```ro
 [n]   \ n-bit type
