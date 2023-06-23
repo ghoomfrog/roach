@@ -141,7 +141,7 @@ Assuming `f` is a field, and `c` is a composite:
 ##c \ number of elements
 ```
 
-Lengths are of type `[?]~`.
+Lengths are of type `[8]~`.
 
 # Names
 
