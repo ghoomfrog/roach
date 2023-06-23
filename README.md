@@ -164,12 +164,6 @@ traversal: [
 ]
 ```
 
-Here's syntactic sugar for multi-name declarations:
-
-```ro
-(start end n_times): [8]
-```
-
 ## Assignments
 
 Once declared, names can be assigned values like this:
@@ -196,6 +190,12 @@ Here's syntactic sugar for assigning redundant values:
 
 ```ro
 ((start end) n_times) = (1 3) \ start is 1, end is 1, and n_times is 3
+```
+
+This syntax can be translated to declarations. For example:
+
+```ro
+(start end n_times): [8]
 ```
 
 ## Constant Names
