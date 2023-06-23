@@ -124,7 +124,7 @@ Character literals are of type `[7]~`. Here are some examples:
 
 # String Literals
 
-String literals are of type `[7]~*1~`. Here are some examples:
+String literals are of type `[7]~*0~`. Here are some examples:
 
 ```ro
 "Ribbit, MFs!"
@@ -242,7 +242,7 @@ Type aliases can't be redefined. Here are some examples:
 
 ```ro
 Byte [8]
-RawText [32]*1~
+RawText [32]*0~
 ```
 
 # Constructors
@@ -475,8 +475,8 @@ Let's say we're remaking the `Map` type from the standard module *maps*:
 
 ```ro
 Map <K V>[
-	keys: K*1~
-	values: V*1~
+	keys: K*0~
+	values: V*0~
 ]
 ```
 
@@ -500,7 +500,7 @@ optional_byte: Optional = (1 byte)
 
 # Command Line Arguments
 
-`$` is an array of type `[7]~*1~*1~` containing the command line arguments.
+`$` is an array of type `[7]~*0~*0~` containing the command line arguments.
 
 # Slash Functions
 
