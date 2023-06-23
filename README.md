@@ -298,7 +298,7 @@ f#i <- x   \ a new field where x is inserted before the bit at index i
 And bits can be deleted like this:
 
 ```ro
-f!       \ the default value of f's type
+f!       \ the default value of f's type (it's like a cleared version)
 f#i!     \ a new field where the bit at index i is deleted
 f#(i j)! \ a new field where the slice from index i to j is deleted
 ```
@@ -316,7 +316,7 @@ c#i <- x   \ a new composite where x is inserted before the element at index i
 And elements can be deleted like this:
 
 ```ro
-c!       \ the default value of c's type
+c!       \ the default value of c's type (it's like a cleared version)
 c#i!     \ a new composite where the element at index i is deleted
 c#(i j)! \ a new composite where the slice from index i to j is deleted
 ```
