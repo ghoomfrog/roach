@@ -273,7 +273,7 @@ v#(i j) \ the field slice from index i to j
 
 Negative indices and using this syntax in assignments are supported.
 
-# Accessing Subvalues
+# Accessing Elements
 
 Assuming `c` is a composite:
 
@@ -303,9 +303,9 @@ f#i!     \ a new field where the bit at index i is deleted
 f#(i j)! \ a new field where the slice from index i to j is deleted
 ```
 
-# Managing Subvalues
+# Managing Elements
 
-Subvalues can be inserted into a composite `c` like this:
+Elements can be inserted into a composite `c` like this:
 
 ```ro
 c <- x     \ a new composite where x is appended
@@ -321,7 +321,7 @@ c#i!     \ a new composite where the element at index i is deleted
 c#(i j)! \ a new composite where the slice from index i to j is deleted
 ```
 
-# Note on Deleting Bits and Subvalues
+# Note on Deleting Bits and Elements
 
 Use `!!` to delete bits or elements in place:
 
