@@ -72,8 +72,6 @@ Numerals are of type `[?]~`. Here are some examples:
 
 # Operators
 
-These are the classic operators founds in most programming languages:
-
 - `-x`
 - `x + y`
 - `x - y`
