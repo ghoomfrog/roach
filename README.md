@@ -23,16 +23,15 @@ Fields are groups of contiguous bits. Every scalar value in Roach is a field. He
 ```ro
 [n]   \ n-bit type
 [0]   \ void or unit type
-[]    \ equivalent to [0]
-[?]   \ arch-bit type
 .T    \ floating-point version of type T
 -T    \ signed version of unsigned type T
 T~    \ dynamic version of type T where its size is its minimum number of bits
 ~T    \ dynamic version of type T where its size is its maximum number of bits
+m~T   \ dynamic version of type T where its size is its maximum number of bits, and m is its minimum
 T~m   \ dynamic version of type T where its size is its minimum number of bits, and m is its maximum
 ```
 
-*arch* refers to the bit-size of the CPU's registers (e.g. 32-bit or 64-bit), which can be accessed as `/arch`.
+The bit-size of the CPU's registers (e.g. 32-bit or 64-bit) can be accessed as `?`.
 
 Without `-`, types are unsigned.
 
@@ -66,8 +65,6 @@ Numerals are of type `[?]~`. Here are some examples:
 0o777
 0xf0f0f0
 21
-8.
-.7
 0xa.1
 ```
 
@@ -93,12 +90,6 @@ Numerals are of type `[?]~`. Here are some examples:
 - `x || y`
 - `x && y`
 
-All binary operators can be suffixed with `=` to make them operate in place. For example:
-
-```ro
-x &&= y \ equivalent to x = x && y
-```
-
 More specific operators are explained later.
 
 # Character Literals
@@ -115,7 +106,6 @@ Character literals are of type `[7]~`. Here are some examples:
 * `\\` — `\`
 * `\'` — `'`
 * `\"` — `"`
-* `\xHH` — The unicode character with the hexadecimal code `HH`
 * `\u(N)` — The unicode character with the code from the numeral `N`
 * `\0` — NUL
 * `\t` — TAB
@@ -135,11 +125,9 @@ String literals are of type `[7]~*`. Here are some examples:
 
 # Lengths
 
-Assuming `f` is a field, and `c` is a composite:
-
 ```ro
-##f \ number of bits
-##c \ number of elements
+###x \ number of bits in x
+##x \ number of elements in x
 ```
 
 Lengths are of type `[8]~`.
@@ -165,6 +153,8 @@ traversal: [
 ]
 ```
 
+Declarations return 0.
+
 ## Assignments
 
 Once declared, names can be assigned values like this:
@@ -173,69 +163,21 @@ Once declared, names can be assigned values like this:
 age = 10
 ```
 
-Here's syntactic sugar for definitions (declarations plus assignments):
+Names can also be defined: declared and assigned in the same expression:
 
 ```ro
 age: [8] = 10
 ```
 
-If a multi-name assignment includes multiple value, each value is assigned to its respective name. Otherwise, the sole value is assigned to all the names. Here's an example:
-
-```ro
-(start end n_times) = 1       \ start is 1, end is 1, and n_times is 1
-(start end n_times) = (1 1)   \ error: not enough respective values
-(start end n_times) = (1 1 3) \ start is 1, end is 1, and n_times is 3
-```
-
-Here's syntactic sugar for assigning redundant values:
-
-```ro
-((start end) n_times) = (1 3) \ start is 1, end is 1, and n_times is 3
-```
-
-This syntax can be translated to declarations. For example:
-
-```ro
-(start end n_times): [8]
-```
+Assignments return the assigned value.
 
 ## Constant Names
 
-Top-level names can refer to constants by using `:=` instead of `=`. Here's an example:
+Top-level names (ones that are not refering to elements) can refer to constants by using `:=` instead of `=`. Here's an example:
 
 ```ro
 SIZE := 16
 ```
-
-*Top-level* means they're not assigned elements.
-
-## Enums
-
-The following syntax...
-
-```ro
-(
-	Carry := 1 << #
-	IsZero
-	InterruptIsDisabled
-	Decimal
-	Overflown := 1 << # + 6
-	Negative
-)
-```
-
-...is syntactic sugar for:
-
-```ro
-Carry := 1 << 0
-IsZero := 1 << 1
-InterruptIsDisabled := 1 << 2
-Decimal := 1 << 3
-Overflown := 1 << 0 + 6
-Negative := 1 << 1 + 6
-```
-
-As you can see, `#` is a special construct that allows implicit sequential assignments based on a formula. The parenthesis are necessary to prevent the enum from bleeding into other immediate assignments.
 
 ## Type Aliases
 
@@ -327,7 +269,7 @@ c#(i j)! \ a new composite where the slice from index i to j is deleted
 Use `!!` to delete bits or elements in place:
 
 ```ro
-c#i!! \ equivalent to c#i = c#i!
+c!! \ equivalent to c = c!
 ```
 
 # Conversions
@@ -338,7 +280,7 @@ Assuming `x` is the value to be converted to type `T`:
 x: T \ x as a value of type T
 ```
 
-Everything is convertible.
+Everything is convertible to everything.
 
 # Separating Statements
 
@@ -371,13 +313,13 @@ x ~> y \ While x is not 0, add y to the array that the loop returns.
 Breaking out of a loop is done using:
 
 ```ro
-/break
+<>
 ```
 
 And "continuing" to the loop's next iteration is done using:
 
 ```ro
-/continue
+^^
 ```
 
 # Functions
@@ -433,20 +375,6 @@ The following constructs are unlocked for coroutines:
 ```
 
 Asynchronous calls return a value of type `[done:[1] value:T]` where `T` is the return type, and `done` is whether the function finally returned.
-
-## Method Syntax
-
-Assuming `f` is a function that takes a composite of two values, and `x` and `y` can be respective elements of that composite. The following syntax...
-
-```ro
-x:f y
-```
-
-is syntactic sugar for:
-
-```ro
-f(x y)
-```
 
 # For Loops
 
@@ -545,12 +473,6 @@ Assuming *regex* is the name of a standard module, and `"user.ro"` is a path to 
 ```ro
 +regex
 +"user.ro"
-```
-
-Or:
-
-```ro
-+(regex "user.ro")
 ```
 
 You can always use '/' in paths, regardless of the operating system. Assuming *x* is the name of a disk in Windows (e.g. C), the root path '/x' is 'x:' in Windows.
