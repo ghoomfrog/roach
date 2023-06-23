@@ -1,5 +1,3 @@
-<!--TODO: bytecode-->
-
 # Roach
 
 Roach is a minimalist, general-purpose, bit-level programming language. It's designed to easily access and modify odd or non-byte-based amounts of bits.
