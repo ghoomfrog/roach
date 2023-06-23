@@ -215,10 +215,10 @@ The following syntax...
 ```ro
 (
 	Carry := 1 << #
-	Zero
-	InterruptDisable
+	IsZero
+	InterruptIsDisabled
 	Decimal
-	Overflow := 1 << # + 6
+	Overflown := 1 << # + 6
 	Negative
 )
 ```
@@ -227,10 +227,10 @@ The following syntax...
 
 ```ro
 Carry := 1 << 0
-Zero := 1 << 1
-InterruptDisable := 1 << 2
+IsZero := 1 << 1
+InterruptIsDisabled := 1 << 2
 Decimal := 1 << 3
-Overflow := 1 << 0 + 6
+Overflown := 1 << 0 + 6
 Negative := 1 << 1 + 6
 ```
 
