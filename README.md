@@ -65,7 +65,8 @@ Numerals are of type `[?]~`. Here are some examples:
 0o777
 0xf0f0f0
 21
-8.7
+8.
+.7
 0xa.1
 ```
 
