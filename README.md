@@ -420,8 +420,8 @@ Coroutines are functions that use one of these constructs:
 
 ```ro
 =>> x   \ Yield x.
-<<= f   \ Yield to coroutine f with no arguments.
-<<= f x \ Yield to coroutine f and pass argument x if its the first time yielding to it.
+=<< f   \ Yield to coroutine f with no arguments.
+=<< f x \ Yield to coroutine f and pass argument x if its the first time yielding to it.
 ```
 
 The following constructs are unlocked for coroutines:
