@@ -145,7 +145,7 @@ Lengths are of type `[8]~`.
 
 # Names
 
-Names can refers to types or values.
+Names can refer to types or values.
 
 ## Declarations
 
