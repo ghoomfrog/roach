@@ -18,7 +18,7 @@ Note that '\)' needs to be preceded by a newline to close the comment.
 
 # Fields
 
-Fields are groups of contiguous bits. Every scalar and vector value in Roach is a field. Here are the various field types:
+Fields are groups of contiguous bits. Every scalar value in Roach is a field. Here are the various field types:
 
 ```ro
 [n]   \ n-bit type
@@ -27,7 +27,6 @@ Fields are groups of contiguous bits. Every scalar and vector value in Roach is 
 [?]   \ arch-bit type
 .T    \ floating-point version of type T
 -T    \ signed version of unsigned type T
-T*n   \ array type of n items of type T
 T~    \ dynamic version of type T
 T~m   \ dynamic version of type T where its size is its minimum number of bits, and m is its maximum
 ```
@@ -38,9 +37,9 @@ Without `-`, types are unsigned.
 
 # Composites
 
-Composites are values composed of other values, called subvalues or subs.
+Composites are values composed of other values, called elements.
 
-Here's a composite type with subtypes for each element of a 64-bit floating-point number:
+Here's a 64-bit floating-point type as a composite type:
 
 ```ro
 [
@@ -48,6 +47,12 @@ Here's a composite type with subtypes for each element of a 64-bit floating-poin
 	[11] \ exponent
 	[52] \ fraction
 ]
+```
+
+Composite types can be restricted to only having elements, or items, of one type. These composites are known as arrays.
+
+```ro
+T*n \ array type with n items of type T
 ```
 
 # Numerals
@@ -133,7 +138,7 @@ Assuming `f` is a field, and `c` is a composite:
 
 ```ro
 ##f \ number of bits
-##c \ number of subvalues
+##c \ number of elements
 ```
 
 Lengths are of type `[?]~`.
@@ -201,7 +206,7 @@ Top-level names can refer to constants by using `:=` instead of `=`. Here's an e
 SIZE := 16
 ```
 
-*Top-level* means they're not assigned subvalues.
+*Top-level* means they're not assigned elements.
 
 ## Enums
 
@@ -273,9 +278,9 @@ Negative indices and using this syntax in assignments are supported.
 Assuming `c` is a composite:
 
 ```ro
-c.i     \ the subvalue at index i
+c.i     \ the element at index i
 c.(i j) \ the composite slice from index i to j
-c.a     \ the subvalue named a
+c.a     \ the element named a
 ```
 
 Negative indices and using this syntax in assignments are supported.
@@ -301,20 +306,20 @@ f#(i j)! \ a new field where the slice from index i to j is deleted
 Subvalues can be inserted into a composite `c` like this:
 
 ```ro
-c#i <- x   \ a new composite where x is inserted before the subvalue at index i
-(c#i) <- x \ a new composite only containing the subvalue at index i before x
+c#i <- x   \ a new composite where x is inserted before the element at index i
+(c#i) <- x \ a new composite only containing the element at index i before x
 ```
 
-And subvalues can be deleted like this:
+And elements can be deleted like this:
 
 ```ro
-c#i!     \ a new composite where the subvalue at index i is deleted
+c#i!     \ a new composite where the element at index i is deleted
 c#(i j)! \ a new composite where the slice from index i to j is deleted
 ```
 
 # Note on Deleting Bits and Subvalues
 
-Use `!!` to delete bits or subvalues in place:
+Use `!!` to delete bits or elements in place:
 
 ```ro
 c#i!! \ equivalent to c#i = c#i!
@@ -426,7 +431,7 @@ Asynchronous calls return a value of type `[done:[1] value:T]` where `T` is the 
 
 ## Method Syntax
 
-Assuming `f` is a function that takes a composite of two values, and `x` and `y` can be respective subvalues of that composite. The following syntax...
+Assuming `f` is a function that takes a composite of two values, and `x` and `y` can be respective elements of that composite. The following syntax...
 
 ```ro
 x:f y
