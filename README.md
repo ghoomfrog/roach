@@ -92,7 +92,7 @@ Numerals are of type `[?]~`. Here are some examples:
 - `x || y`
 - `x && y`
 
-All binary operators can be suffixed by `=` to make them operate in place. For example:
+All binary operators can be suffixed with `=` to make them operate in place. For example:
 
 ```ro
 x &&= y \ equivalent to x = x && y
