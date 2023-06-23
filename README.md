@@ -290,6 +290,7 @@ Negative indices and using this syntax in assignments are supported.
 Bits can be inserted into a field `f` like this:
 
 ```ro
+f <- x     \ a new field where x is appended
 f#i <- x   \ a new field where x is inserted before the bit at index i
 (f#i) <- x \ a new field only containing the bit at index i before x
 ```
@@ -297,6 +298,7 @@ f#i <- x   \ a new field where x is inserted before the bit at index i
 And bits can be deleted like this:
 
 ```ro
+f!       \ the default value of f's type
 f#i!     \ a new field where the bit at index i is deleted
 f#(i j)! \ a new field where the slice from index i to j is deleted
 ```
@@ -306,6 +308,7 @@ f#(i j)! \ a new field where the slice from index i to j is deleted
 Subvalues can be inserted into a composite `c` like this:
 
 ```ro
+c <- x     \ a new composite where x is appended
 c#i <- x   \ a new composite where x is inserted before the element at index i
 (c#i) <- x \ a new composite only containing the element at index i before x
 ```
@@ -313,6 +316,7 @@ c#i <- x   \ a new composite where x is inserted before the element at index i
 And elements can be deleted like this:
 
 ```ro
+c!       \ the default value of c's type
 c#i!     \ a new composite where the element at index i is deleted
 c#(i j)! \ a new composite where the slice from index i to j is deleted
 ```
