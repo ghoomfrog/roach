@@ -431,7 +431,7 @@ The following constructs are unlocked for coroutines:
 ^f x \ Asynchronously call coroutine f with argument x.
 ```
 
-Asynchronous calls return a value of type `[done:[1] value:T]` where `T` is the return type, and `done` is whether the function finally returns.
+Asynchronous calls return a value of type `[done:[1] value:T]` where `T` is the return type, and `done` is whether the function finally returned.
 
 ## Method Syntax
 
