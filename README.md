@@ -1,3 +1,5 @@
+<!--TODO: bytecode-->
+
 # Roach
 
 Roach is a minimalist, general-purpose, bit-level programming language. It's designed to easily access and modify odd or non-byte-based amounts of bits.
@@ -54,6 +56,7 @@ Composite types can be restricted to only having elements, or items, of one type
 
 ```ro
 T*n \ array type with n items of type T
+T*  \ equivalent to T*0
 ```
 
 # Numerals
@@ -124,7 +127,7 @@ Character literals are of type `[7]~`. Here are some examples:
 
 # String Literals
 
-String literals are of type `[7]~*0~`. Here are some examples:
+String literals are of type `[7]~*~`. Here are some examples:
 
 ```ro
 "Ribbit, MFs!"
@@ -242,7 +245,7 @@ Type aliases can't be redefined. Here are some examples:
 
 ```ro
 Byte [8]
-RawText [32]*0~
+RawText [32]*~
 ```
 
 # Constructors
@@ -475,8 +478,8 @@ Let's say we're remaking the `Map` type from the standard module *maps*:
 
 ```ro
 Map <K V>[
-	keys: K*0~
-	values: V*0~
+	keys: K*~
+	values: V*~
 ]
 ```
 
@@ -500,7 +503,7 @@ optional_byte: Optional = (1 byte)
 
 # Command Line Arguments
 
-`$` is an array of type `[7]~*0~*0~` containing the command line arguments.
+`$` is an array of type `[7]~*~*~` containing the command line arguments.
 
 # Slash Functions
 
