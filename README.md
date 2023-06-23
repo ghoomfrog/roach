@@ -500,7 +500,7 @@ optional_byte: Optional = (1 byte)
 
 # Command Line Arguments
 
-`$` is an array of type `[8]+` containing the command line arguments.
+`$` is an array of type `[7]~*1~*1~` containing the command line arguments.
 
 # Slash Functions
 
