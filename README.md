@@ -102,7 +102,7 @@ More specific operators are explained later.
 
 # Character Literals
 
-Character literals are of type `[8]~`. Here are some examples:
+Character literals are of type `[7]~`. Here are some examples:
 
 ```ro
 '🐸'
@@ -124,7 +124,7 @@ Character literals are of type `[8]~`. Here are some examples:
 
 # String Literals
 
-String literals are of type `[8]~*1~`. Here are some examples:
+String literals are of type `[7]~*1~`. Here are some examples:
 
 ```ro
 "Ribbit, MFs!"
