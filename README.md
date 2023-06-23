@@ -253,7 +253,7 @@ Here's an example with a quick constructor:
 me: [name:RawText age:Byte] = "ghoom" 21
 ```
 
-Here's a variation with a full constructor:
+Here's a non-declarative variation with a full constructor:
 
 ```ro
 me = {
