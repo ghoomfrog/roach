@@ -127,7 +127,7 @@ String literals are of type `[7]~*`. Here are some examples:
 
 ```ro
 ###x \ number of bits in x
-##x \ number of elements in x
+##x  \ number of elements in x
 ```
 
 Lengths are of type `[8]~`.
