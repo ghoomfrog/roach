@@ -435,37 +435,6 @@ optional_byte: Optional = (1 byte)
 
 Slash functions are built-in constructs that are used as functions.
 
-## Files
-
-```ro
-/open path  \ Returns a file descriptor.
-/close fd
-/exists path
-/write(fd, index, content)
-/insert(fd, index, content)
-/append(fd, content)
-/ensure     \ For the next file operation, create parent directories as necessary.
-/touch path \ Create a regular file if it doesn't exist, and return a file descriptor.
-/dir path   \ Create a directory if it doesn't exist, and return a file descriptor.
-/link(source_path, destination_path)
-```
-
-File descriptors are of type `[?]~`.
-
-Negative indices are supported.
-
-## Standard Streams
-
-```ro
-/put char
-/n             \ equivalent to /put '\n'
-/r             \ equivalent to /put '\r'
-/print string
-/express value \ Print a value numerically in decimal.
-/error content \ Print to stderr.
-/input         \ Returns the input.
-```
-
 # Modules
 
 Assuming *regex* is the name of a standard module, and `"user.ro"` is a path to a module, this is how you include them:
@@ -476,3 +445,24 @@ Assuming *regex* is the name of a standard module, and `"user.ro"` is a path to 
 ```
 
 You can always use '/' in paths, regardless of the operating system. Assuming *x* is the name of a disk in Windows (e.g. C), the root path '/x' is 'x:' in Windows.
+
+# Machine Code
+
+Machine code can be inserted like this:
+
+```ro
+/x
+```
+
+...where `x` is the machine code.
+
+# Detecting the Underlying ABI
+
+`??`, a field of type `[?]`, can be one of:
+
+1. Windows
+1. Linux
+1. Apple
+1. FreeBSD
+1. Solaris
+1. HP-UX
