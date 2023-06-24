@@ -130,7 +130,7 @@ String literals are of type `[7]~*`. Here are some examples:
 ##x  \ number of elements in x
 ```
 
-Lengths are of type `[8]~`.
+Lengths are of type `[1]~`.
 
 # Names
 
