@@ -461,8 +461,7 @@ Machine code can be inserted like this:
 `??`, a field of type `[?]`, can be one of:
 
 1. Windows
-1. Linux
 1. Apple
+1. Linux
 1. FreeBSD
 1. Solaris
-1. HP-UX
