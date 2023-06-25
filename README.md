@@ -21,14 +21,14 @@ Note that '\)' needs to be preceded by a newline to close the comment.
 Fields are groups of contiguous bits. Every scalar value in Roach is a field. Here are the various field types:
 
 ```ro
-[n]   \ n-bit type
-[0]   \ void or unit type
-.T    \ floating-point version of type T
--T    \ signed version of unsigned type T
-T~    \ dynamic version of type T where its size is its minimum number of bits
-~T    \ dynamic version of type T where its size is its maximum number of bits
-m~T   \ dynamic version of type T where its size is its maximum number of bits, and m is its minimum
-T~m   \ dynamic version of type T where its size is its minimum number of bits, and m is its maximum
+[n] \ n-bit type
+[0] \ void or unit type
+.T  \ floating-point version of type T
+-T  \ signed version of unsigned type T
+T~  \ dynamic version of type T where its size is its minimum number of bits
+~T  \ dynamic version of type T where its size is its maximum number of bits
+m~T \ dynamic version of type T where its size is its maximum number of bits, and m is its minimum
+T~m \ dynamic version of type T where its size is its minimum number of bits, and m is its maximum
 ```
 
 The bit-size of the CPU's registers (e.g. 32-bit or 64-bit) can be accessed as `?`.
