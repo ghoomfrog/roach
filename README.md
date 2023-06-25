@@ -193,7 +193,7 @@ RawText [32]*
 Here's an example with a quick constructor:
 
 ```ro
-me: [name:RawText age:Byte] = "ghoom" 21
+me: [name:RawText age:Byte] = ("ghoom" 21)
 ```
 
 Here's a non-declarative variation with a full constructor:
