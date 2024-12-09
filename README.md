@@ -173,7 +173,7 @@ Assignments return the assigned value.
 
 ## Constant Names
 
-Top-level names (ones that are not refering to elements) can refer to constants by using `:=` instead of `=`. Here's an example:
+Top-level names (ones that are not referring to elements) can refer to constants by using `:=` instead of `=`. Here's an example:
 
 ```ro
 SIZE := 16
